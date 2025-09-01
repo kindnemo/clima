@@ -1,3 +1,47 @@
-body{
-    background-color: antiquewhite;
+body {
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #87CEEB 0%, #4682B4 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Header Styles */
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#logo {
+    width: 7rem;
+    max-width: 100%;
+    height: auto;
+}
+
+#search-container{
+    position: relative;
+    width: 400px;
+    max-width: 400px;
+}
+
+#search{
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    color: white;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Content Structure */
+#content{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
 }
