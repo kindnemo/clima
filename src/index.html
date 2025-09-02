@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="images/climaFavicon.png">
     <title>Clima</title>
 </head>
 <body>
@@ -15,14 +16,94 @@
 
     <div id="content">
         <div class="card-container-div">
-            <div class="details-div"></div>
-            <div class="details-div"></div>
-            <div class="details-div"></div>
+            <div class="details-div" id="current-weather-grid" >
+                <div id="hero-weather-div"></div>
+
+                <div class="details-div" id="hero-detail-container">
+                    <div class="details-div hero-details-div" id="feels-like"></div>
+                    
+                    <div class="details-div hero-details-div" id="humidity"></div>
+                    
+                    <div class="details-div hero-details-div" id="wind-speed"></div>
+                    
+                    <div class="details-div hero-details-div" id="uv-index"></div>
+                </div>
+            </div>
+            
+            <div class="details-div" id="hourly-forecast-grid">
+                <h2 class="hero-texts" id="hourly">Hourly Forecast</h2>
+                <div class="hourly-forecast-container">
+                    <div class="hourly-forecast-div"></div>
+                    <div class="hourly-forecast-div"></div>
+                    <div class="hourly-forecast-div"></div>
+                    <div class="hourly-forecast-div"></div>
+                </div>
+            </div>
+            
+            <div class="details-div" id="air-quality-grid">
+                <h2 class="hero-texts" id="airquality">Air Quality</h2>
+                <div class="air-container">
+                    <span>
+                        <p id="air-quality-number">52</p>
+                        <p id="air-quality-remark">Good</p>
+                    </span>
+
+                </div>
+            </div>
         </div>
         
         <div class="card-container-div">
-            <div class="details-div"></div>
-            <div class="details-div"></div>
+            
+            <div class="details-div" id="five-day-forecast-grid">
+                <h2 class="hero-texts" id="five-day-forecast-heading">5-Day Forecast</h2>
+
+                <div id="forecast-container">
+                    <div class="forecast-card">
+                        <p class="day">Monday</p>
+                        <p class="temperature">22°C</p>
+                    </div>
+                    <div class="forecast-card">
+                        <p class="day">Tuesday</p>
+                        <p class="temperature">24°C</p>
+                    </div>
+                    <div class="forecast-card">
+                        <p class="day">Wednesday</p>
+                        <p class="temperature">23°C</p>
+                    </div>
+                    <div class="forecast-card">
+                        <p class="day">Thursday</p>
+                        <p class="temperature">25°C</p>
+                    </div>
+                    <div class="forecast-card">
+                        <p class="day">Friday</p>
+                        <p class="temperature">26°C</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="details-div" id="todays-highlight-grid">
+                <h2 class="hero-texts" id="highlight-heading">Today's Highlights</h2>
+
+                <div id="highlights-container">
+                    <div class="highlight-card" id="sunrise-card">
+                        <h3 class="highlight-title">Sunrise & Sunset</h3>
+                        <p class="highlight-value" id="sunrise-time">6:12 AM</p>
+                        <p class="highlight-value" id="sunset-time">7:45 PM</p>
+                    </div>
+                    <div class="highlight-card" id="pressure-card">
+                        <h3 class="highlight-title">Pressure</h3>
+                        <p class="highlight-value" id="pressure-value">1015 hPa</p>
+                    </div>
+                    <div class="highlight-card" id="visibility-card">
+                        <h3 class="highlight-title">Visibility</h3>
+                        <p class="highlight-value" id="visibility-value">10 km</p>
+                    </div>
+                    <div class="highlight-card" id="sunset-card">
+                        <h3 class="highlight-title">Sunset</h3>
+                        <p class="highlight-value" id="sunset-value">14°C</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
