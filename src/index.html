@@ -15,18 +15,48 @@
     </header>
 
     <div id="content">
-        <div class="card-container-div">
+        <div class="card-container-div" id="parent-container-1">
             <div class="details-div" id="current-weather-grid" >
-                <div id="hero-weather-div"></div>
+                <div id="hero-weather-div">
+                    <div class="hero-info-div">
+                        <h1 class="hero-details-value" id="city-name">New York</h1>
+                        <p class="hero-details-value" id="current-date">Monday, 20 Nov 2023</p>
+                    </div>
+                    <span>
+                        <img src="images/animation-ready/clear-day.svg" alt="weather-icon" id="weather-icon" class="icons">
+                        <p class="hero-details-value" id="weather-description">Partly Cloudy</p>
+                    </span>
+                    <h2 class="hero-details-value" id="current-temperature">22°C</h2>
+                </div>
 
-                <div class="details-div" id="hero-detail-container">
-                    <div class="details-div hero-details-div" id="feels-like"></div>
-                    
-                    <div class="details-div hero-details-div" id="humidity"></div>
-                    
-                    <div class="details-div hero-details-div" id="wind-speed"></div>
-                    
-                    <div class="details-div hero-details-div" id="uv-index"></div>
+                <div id="hero-detail-container">
+                    <div class="details-div hero-details-div" id="feels-like">
+                        <span>
+                           <h3 class="secondary-heading">Feels Like</h3>
+                           <p class="hero-details-value" id="feels-like-value">22°C</p>
+                        </span>
+                    </div>
+
+                    <div class="details-div hero-details-div" id="humidity">
+                        <span>
+                            <h3 class="secondary-heading">Humidity</h3>
+                            <p class="hero-details-value" id="humidity-value">60%</p>
+                        </span>
+                    </div>
+
+                    <div class="details-div hero-details-div" id="wind-speed">
+                        <span>
+                            <h3 class="secondary-heading">Wind Speed</h3>
+                            <p class="hero-details-value" id="wind-speed-value">15 km/h</p>
+                        </span>
+                    </div>
+
+                    <div class="details-div hero-details-div" id="uv-index">
+                        <span>
+                            <h3 class="secondary-heading">UV Index</h3>
+                            <p class="hero-details-value" id="uv-index-value">5</p>
+                        </span>
+                    </div>
                 </div>
             </div>
             
@@ -52,7 +82,7 @@
             </div>
         </div>
         
-        <div class="card-container-div">
+        <div class="card-container-div" id="parent-container-2">
             
             <div class="details-div" id="five-day-forecast-grid">
                 <h2 class="hero-texts" id="five-day-forecast-heading">5-Day Forecast</h2>
