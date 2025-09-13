@@ -1,13 +1,32 @@
 import "./styles.css";
-import { HelloWorld } from "./home";
 import { fetchLocationData } from "./locationFetch";
+import { fetchWeatherData } from "./weatherFetch";
+import { currentWeatherData } from "./collectWeatherData";
+import { displayCurrentWeather } from "./updateWeatherData";
+
+displayCurrentWeather();
+// displayCurrentWeather()
 
 
+
+
+
+
+// import { getLocationData, getWeatherData } from "./loadData";
 
 
 // fetchLocationData()
 //     .then(location => {
-//         console.log(`You are in ${location.city}, ${location.country_name}`);
-//         console.log(`Your IP address is ${location.ip}`);
-//         console.log(`Your location is ${location.latitude}, ${location.longitude}`);
+//         console.log("Location data:", location);
+
+//         setTimeout(() => {
+//             fetchWeatherData(location.city)
+//                 .then(weather => {
+//                     weatherObj = weather;
+//                 });
+
+//         }, 1000);
+
 //     });
+
+// console.log(weatherObj);
