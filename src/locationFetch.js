@@ -16,9 +16,7 @@ try {
     if (result.error) {
         throw new Error(`API error! code: ${result.error.code}, info: ${result.error.info}`);
     }
-
-
-    console.log(result);
+    
     return result;
 } catch (error) {
     console.error('Error fetching location data:', error);
