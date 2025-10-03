@@ -3,8 +3,11 @@ import { fetchLocationData } from "./locationFetch";
 import { fetchWeatherData } from "./weatherFetch";
 import { currentWeatherData } from "./collectWeatherData";
 import { displayCurrentWeather } from "./updateWeatherData";
+import { updateData } from "./updateWeatherData";
 
-displayCurrentWeather();
+// updateData();
+
+// displayCurrentWeather();
 // displayCurrentWeather()
 
 
