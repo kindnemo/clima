@@ -1,18 +1,15 @@
 import "./styles.css";
 import { fetchLocationData } from "./locationFetch";
 import { fetchWeatherData } from "./weatherFetch";
-import { currentWeatherData } from "./collectWeatherData";
-import { displayCurrentWeather } from "./updateWeatherData";
 import { updateData } from "./updateWeatherData";
 
 // updateData();
 
-// displayCurrentWeather();
-// displayCurrentWeather()
 
-
-
-
+// fetchLocationData().then(data => {
+//     locationData = data;
+//     console.log(locationData);
+// });                               
 
 
 // import { getLocationData, getWeatherData } from "./loadData";

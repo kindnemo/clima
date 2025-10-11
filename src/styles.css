@@ -129,6 +129,10 @@ header{
     align-items: center;
 }
 
+.five-day-forecast-icon-container {
+    display: flex;
+    margin-right: 30px;
+}
 /* ICON STYLES */
 .icons {
     width: 10rem;
