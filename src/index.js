@@ -3,7 +3,7 @@ import { fetchLocationData } from "./locationFetch";
 import { fetchWeatherData } from "./weatherFetch";
 import { updateData } from "./updateWeatherData";
 
-// updateData();
+updateData();
 
 
 // fetchLocationData().then(data => {

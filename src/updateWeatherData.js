@@ -17,6 +17,13 @@ const uvIndex = document.getElementById("uv-index-value");
 const hourlyTempNode = document.querySelectorAll(".hourly-temperature");
 const airQualityNumber = document.getElementById("air-quality-number");
 const airQualityRemark = document.getElementById("air-quality-remark");
+const fiveDayNode = document.querySelectorAll(".day");
+const fiveDayTempNode = document.querySelectorAll(".five-day-temperature")
+const sunrise = document.getElementById("sunrise-value");
+const sunset = document.getElementById("sunset-value");
+const visibility = document.getElementById("visibility-value");
+const pressure = document.getElementById("pressure-value");
+
 
 
 // Function to display current weather data on the webpage
@@ -104,7 +111,37 @@ export async function updateData() {
     }
 
     // Updating 5-day forecast
-    
+    // getting the current day and then updating the next 5 days
+    const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const today = locationTime.getDay();
+    for (let i = 1; i <= 5; i++) {
+        const dayIndex = (today + i) % 7; // Wrap around using modulo
+        const dayName = daysOfWeek[dayIndex];
 
+        fiveDayNode[i - 1].textContent = dayName;
+        fiveDayTempNode[i - 1].textContent = `${Math.round(weatherData.days[i].tempmax)}°C/${Math.round(weatherData.days[i].tempmin)}°C`;
+    }
 
+    // Updating Today's Highlights
+    // Sunrise time
+    const sunriseTime = new Date(weatherData.days[0].sunriseEpoch * 1000).toLocaleTimeString("en-US", {
+        timeZone: timezone,
+        hour: "2-digit",
+        minute: "2-digit",
+    });
+    sunrise.textContent = sunriseTime;
+
+    // Sunset time
+    const sunsetTime = new Date(weatherData.days[0].sunsetEpoch * 1000).toLocaleTimeString("en-US", {
+        timeZone: timezone,
+        hour: "2-digit",
+        minute: "2-digit",
+    });
+    sunset.textContent = sunsetTime;
+
+    // Pressure
+    pressure.textContent = `${weatherData.currentConditions.pressure} mb`;
+
+    // Visibility
+    visibility.textContent = `${weatherData.currentConditions.visibility} km`;
 }
