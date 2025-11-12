@@ -2,7 +2,7 @@ import { fetchWeatherData } from "./weatherFetch";
 import { fetchLocationData } from "./locationFetch";
 import { icons } from "./loadIcons"; //Importing all icons 
 // Entire weather data of the current location
-const weatherData = await fetchWeatherData();
+
 
 // Entire location data of the current location
 
@@ -19,7 +19,7 @@ const hourlyTempNode = document.querySelectorAll(".hourly-temperature");
 const airQualityNumber = document.getElementById("air-quality-number");
 const airQualityRemark = document.getElementById("air-quality-remark");
 const fiveDayNode = document.querySelectorAll(".day");
-const fiveDayTempNode = document.querySelectorAll(".five-day-temperature")
+const fiveDayTempNode = document.querySelectorAll(".five-day-temperature");
 const sunrise = document.getElementById("sunrise-value");
 const sunset = document.getElementById("sunset-value");
 const visibility = document.getElementById("visibility-value");
@@ -40,7 +40,11 @@ const visibilityIcon = document.getElementById("visibility-icon");
 
 
 // Function to display current weather data on the webpage
-export async function updateData() {
+export async function updateData(city) {
+    console.log("working")
+    console.log(city)
+    const weatherData = await fetchWeatherData(city);
+    console.log("working")
     // Update city name and country
     cityName.textContent = `${weatherData.resolvedAddress}`;
     let windSpeedValue = Math.round(weatherData.currentConditions.windspeed);
@@ -103,7 +107,7 @@ export async function updateData() {
         }
     }
     // Update hourly forecast time labels
-    const isAM = false;
+    let isAM = false;
     for (let i = 0; i < 3; i++) {
         let forecastHour = (currentHour + i+1) % 12;
         // Figuring out if its AM or PM

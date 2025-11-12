@@ -13,10 +13,12 @@ export async function ensureLocationData() {
 const weatherAPIKey = "BZDVQEHYGZ2N3SH3FX8BUNAAY";
 const weatherBaseURL = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/";
 
-export async function fetchWeatherData() {
+export async function fetchWeatherData(userInputCity) {
 
     const location = await ensureLocationData();
-    const city = location.city;
+    // const city = location.city;
+    const city = userInputCity ? userInputCity : location.city;
+
     try {
         const response = await fetch(`${weatherBaseURL}${city}?unitGroup=metric&key=${weatherAPIKey}&contentType=json`);
 
