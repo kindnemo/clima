@@ -1,6 +1,5 @@
 body {
     font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: linear-gradient(135deg, #87CEEB 0%, #4682B4 100%);
     min-height: 100vh;
     overflow-x: hidden;
 }
@@ -189,4 +188,350 @@ header{
     font-weight: 600;
     color: black;
     margin: 0;
+}
+
+/* Background Animation */
+/* CLOUD ANIMATION */
+.background-animation {
+    position: fixed;        
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;   
+    z-index: -1;
+}
+
+.cloud {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);  
+    border-radius: 50px;                    
+    animation: float 20s infinite ease-in-out;  
+}
+
+.cloud1 {
+    width: 180px;       
+    height: 60px;        
+    background: rgba(255, 255, 255, 0.15);  
+    border-radius: 100px;  
+    filter: blur(2px);
+    top: 10%;
+    animation: float1 24s infinite ease-in-out;
+    animation-delay: -10s;
+}
+.cloud2 {
+    width: 180px;       
+    height: 60px;        
+    background: rgba(255, 255, 255, 0.15);  
+    border-radius: 100px;  
+    filter: blur(2px);
+    top: 20%;
+    animation: float2 23s infinite ease-in-out;
+    animation-delay: -5s;
+}
+.cloud3 {
+    width: 180px;       
+    height: 60px;        
+    background: rgba(255, 255, 255, 0.15);  
+    border-radius: 100px;  
+    filter: blur(2px);
+    top: 40%;
+    animation: float3 20s infinite ease-in-out;
+    animation-delay: -14s;
+}
+.cloud4 {
+    width: 180px;       
+    height: 60px;        
+    background: rgba(255, 255, 255, 0.15);  
+    border-radius: 100px;  
+    filter: blur(2px);
+    top: 60%;
+    animation: float4 23s infinite ease-in-out;
+    animation-delay: -8s;
+}
+.cloud5 {
+    width: 180px;       
+    height: 60px;        
+    background: rgba(255, 255, 255, 0.15);  
+    border-radius: 100px;  
+    filter: blur(2px);
+    top: 80%;
+    animation: float5 24s infinite ease-in-out;
+    animation-delay: -12s;
+}
+.cloud6 {
+    width: 180px;       
+    height: 60px;        
+    background: rgba(255, 255, 255, 0.15);  
+    border-radius: 100px;  
+    filter: blur(2px);
+    top: 50%;
+    animation: float5 26s infinite ease-in-out;
+    animation-delay: -3s;
+}
+
+@keyframes float1 {
+    0%, 100% { 
+        transform: translateX(0) translateY(0); 
+    }
+    25% { 
+        transform: translateX(100vw) translateY(-20px);  /* Move right + up */
+    }
+    50% { 
+        transform: translateX(120vw) translateY(0);      /* Off-screen right */
+    }
+    75% { 
+        transform: translateX(100vw) translateY(20px);   /* Move right + down */
+    }
+}
+
+@keyframes float2 {
+    0% { transform: translateX(0) translateY(0) scale(1); }
+    25% { transform: translateX(-25vw) translateY(25px) scale(0.95); }
+    50% { transform: translateX(-55vw) translateY(10px) scale(1); }
+    75% { transform: translateX(-85vw) translateY(-20px) scale(1.05); }
+    100% { transform: translateX(-120vw) translateY(0) scale(1); }
+}
+@keyframes float3 {
+    0% { transform: translateX(0) translateY(0) scale(1) rotate(0deg); }
+    33% { transform: translateX(40vw) translateY(-25px) scale(1.08) rotate(2deg); }
+    66% { transform: translateX(80vw) translateY(15px) scale(0.92) rotate(-2deg); }
+    100% { transform: translateX(120vw) translateY(0) scale(1) rotate(0deg); }
+}
+
+@keyframes float4 {
+    0% { transform: translateX(0) translateY(0) scale(1); }
+    30% { transform: translateX(35vw) translateY(18px) scale(1.03); }
+    60% { transform: translateX(70vw) translateY(-12px) scale(0.97); }
+    100% { transform: translateX(120vw) translateY(0) scale(1); }
+}
+
+@keyframes float5 {
+    0% { transform: translateX(0) translateY(0) scale(1); }
+    28% { transform: translateX(-30vw) translateY(-22px) scale(1.06); }
+    56% { transform: translateX(-65vw) translateY(8px) scale(0.94); }
+    100% { transform: translateX(-120vw) translateY(0) scale(1); }
+}
+
+
+.cloud1::before, .cloud2::before, .cloud3::before, .cloud4::before, .cloud5::before, .cloud6::before {
+    content: '';              /* Required for pseudo-elements */
+    position: absolute;       /* Position relative to parent cloud */
+    width: 100px;            /* Circle width */
+    height: 100px;           /* Circle height (perfect circle) */
+    top: -40px;              /* Moves UP to sit on top of base */
+    left: 20px;              /* Positioned from left edge */
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 100%;     /* Makes it a perfect circle */
+}
+
+.cloud1::after, .cloud2::after, .cloud3::after, .cloud4::after, .cloud5::after, .cloud6::after {
+    content: '';
+    position: absolute;
+    width: 120px;            /* Slightly bigger circle */
+    height: 120px;
+    top: -50px;              /* Even higher up */
+    right: 30px;             /* Positioned from right edge */
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 100%;
+}
+
+/* RAIN ANIMATION */
+#rain-container {
+    display: none;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1; /* Place it behind the main content */
+    background:     /* Soft mist overlay */
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.03), transparent 40%),
+    radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.02), transparent 40%),
+    /* Main dark gradient */
+    linear-gradient(to bottom right, #1a1c1f, #0d0f10);
+}
+
+/* Styling for an individual raindrop */
+.drop {
+    position: absolute;
+    width: 2px;
+    height: 20px; /* Length of the rain streak */
+    background: linear-gradient(to bottom, rgba(173, 216, 230, 0) 0%, rgba(173, 216, 230, 0.8) 100%); /* Light Blue/Gray streak */
+    bottom: 100%; /* Start off-screen */
+    pointer-events: none; /* Allows clicking through the drops */
+    transform: rotate(15deg); /* Slight angle for a wind effect */
+    animation: fall linear infinite;
+}
+/* Moving the raindrops */
+@keyframes fall {
+    to {
+        transform: translateY(120vh) rotate(15deg);
+    }
+}
+
+#rain-container::before{
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.008) 40%,
+    rgba(255, 255, 255, 0.025) 50%,
+    rgba(255, 255, 255, 0.008) 60%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 800% 800%;
+  filter: blur(12px); /* ✨ magic — diffuses edges */
+  opacity: 0.7;
+  animation: shimmerFlow 30s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+@keyframes shimmerFlow {
+  0%   { background-position: 100% 0; }
+  50%  { background-position: 0 100%; }
+  100% { background-position: -100% 0; }
+}
+
+
+
+/* LIGHTNING ANIMATION  */
+/* Lightning Styling */
+#lightning-overlay {
+    display: none;
+    background-color: white;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    z-index: 10;
+    mix-blend-mode: screen;
+    opacity: 0;
+    will-change: opacity;
+    pointer-events: none;
+    animation: thunder-flash 30s linear infinite;
+
+}
+@keyframes thunder-flash {
+  0%, 54%    { opacity: 0; }
+  55%        { opacity: 0.9; }
+  55.5%      { opacity: 0; }
+
+  68%        { opacity: 0; }
+  69%        { opacity: 1; }
+  69.3%      { opacity: 0; }
+
+  82%        { opacity: 0; }
+  82.2%      { opacity: 0.6; }
+  82.5%      { opacity: 0; }
+
+  /* rare strong flash */
+  95%        { opacity: 0; }
+  95.5%      { opacity: 0.95; }
+  96%        { opacity: 0; }
+
+  100%       { opacity: 0; }
+}
+
+
+/* SNOWFALL ANimation */
+.snowflake {
+    position: fixed;
+    top: -10px;
+    color: white;
+    font-size: 1em;
+    user-select: none;
+    pointer-events: none;
+    animation: fall linear infinite;
+    opacity: 0.8;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+
+/* Gradients based on the time  */
+
+#background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -200; /* Behind all other content */
+    transition: background 1s ease-in-out;
+}
+
+.background-evening{
+        background: linear-gradient(
+        to top, 
+        #0A0A2A 0%,     
+        #3B0764 45%,    
+        #A900A9 70%,    
+        #FF8C00 100%    
+    );
+}
+.background-morning{
+                background: linear-gradient(
+                to bottom,
+                #87CEFA 0%,   
+                #A0D8FF 25%,  
+                #FBD7A1 55%,   
+                #FFE8C8 100%   
+            );
+}
+.background-afternoon{
+    background: linear-gradient(135deg, #87CEEB 0%, #4682B4 100%);
+}
+
+.background-night{
+                background: linear-gradient(
+                to bottom,
+                #0A0F2D 0%,    
+                #111B3F 30%,    
+                #1A2A55 60%,    
+                #0C0F1A 100%   
+            );
+}
+
+
+/* Loading screen styling */
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #0A0F2D; /* Dark background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* On top of all other content */
+}
+
+
+.dots {
+    display: flex;
+    gap: 12px;
+}
+
+.dots div {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: white;
+    animation: pulse 0.6s infinite alternate;
+}
+
+.dots div:nth-child(2) { animation-delay: 0.2s; }
+.dots div:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes pulse {
+    from { transform: scale(1); opacity: 0.4; }
+    to   { transform: scale(1.7); opacity: 1; }
 }

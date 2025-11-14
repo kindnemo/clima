@@ -15,28 +15,3 @@ searchButton.addEventListener("keydown", (event) => {
         searchButton.value = "";
     }
 });
-
-// fetchLocationData().then(data => {
-//     locationData = data;
-//     console.log(locationData);
-// });                               
-
-
-// import { getLocationData, getWeatherData } from "./loadData";
-
-
-// fetchLocationData()
-//     .then(location => {
-//         console.log("Location data:", location);
-
-//         setTimeout(() => {
-//             fetchWeatherData(location.city)
-//                 .then(weather => {
-//                     weatherObj = weather;
-//                 });
-
-//         }, 1000);
-
-//     });
-
-// console.log(weatherObj);
