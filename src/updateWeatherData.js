@@ -36,15 +36,20 @@ const hourlyIcons = document.querySelectorAll(".hourly-icons");
 const pressureIcon = document.getElementById("pressure-icon");
 const visibilityIcon = document.getElementById("visibility-icon");
 
-
+// UI ELEMENTS
+const rainContainer = document.getElementById("rain-container");
+const lightningOverlay = document.getElementById("lightning-overlay");
+const snowflakeContainer = document.getElementById("snowflake-container");
+const background = document.getElementById("background");
+const loader = document.getElementById("loader");
 
 
 // Function to display current weather data on the webpage
 export async function updateData(city) {
-    console.log("working")
     console.log(city)
     const weatherData = await fetchWeatherData(city);
-    console.log("working")
+    console.log("Data Loaded")
+    loader.style.display = "none"; // Hide loader after data is loaded
     // Update city name and country
     cityName.textContent = `${weatherData.resolvedAddress}`;
     let windSpeedValue = Math.round(weatherData.currentConditions.windspeed);
@@ -53,7 +58,7 @@ export async function updateData(city) {
     let visibilityValue = weatherData.currentConditions.visibility;
 
     // update current date
-    const timezone = weatherData.timezone; // e.g., "America/New_York"
+    const timezone = weatherData.timezone; 
     const locationTime = new Date(new Date().toLocaleString("en-US", { timeZone: timezone }));
 
 
@@ -121,7 +126,7 @@ export async function updateData(city) {
     // Update air quality index and remark
     // Whoever is reading this, please forgive the hardcoding, since the free tier of Visual Crossing API does not provide air quality data.
     // I will simulate air quality data for demonstration purposes by randomly generating values between 0 and 300.
-    const simulatedAQI = Math.floor(Math.random() * 251);
+    const simulatedAQI = Math.floor(Math.random() * 151);
     airQualityNumber.textContent = simulatedAQI;
 
     // Update air quality remark based on the simulated AQI
@@ -250,5 +255,95 @@ export async function updateData(city) {
         visibilityIcon.src = icons["clear-day"];
     }
 
+
+    // UPDATING UI ELEMENTS BASED ON WEATHER CONDITIONS
+    // Rain conditions
+    rainContainer.style.display = "none"; // Hide rain container by default
+    lightningOverlay.style.display = "none"; // Hide lightning overlay by default
+    snowflakeContainer.innerHTML = ""; // Clear previous snowflakes if any
+
+    if (weatherData.currentConditions.preciptype && weatherData.currentConditions.preciptype.includes("rain")) {
+        const numberOfDrops = 100;
+        rainContainer.style.display = "block";
+        rainContainer.innerHTML = ""; // Clear previous drops if any
+        for (let i = 0; i < numberOfDrops; i++) {
+            const drop = document.createElement('div');
+            drop.className = 'drop';
+            
+            // Randomize position, size, and animation duration for a natural look
+            drop.style.left = `${Math.random() * 100}vw`;
+            drop.style.animationDuration = `${0.5 + Math.random() * 1.5}s`;
+            drop.style.animationDelay = `${Math.random() * 5}s`;
+            drop.style.opacity = `${0.3 + Math.random() * 0.7}`;
+            drop.style.width = `${1 + Math.random() * 2}px`;
+
+            rainContainer.appendChild(drop);
+        };
+        // Checking if there's lightning too
+        if (weatherData.currentConditions.preciptype.includes("thunderstorm")) {
+            lightningOverlay.style.display = "block";
+        }
+
+    };
+
+    // Snow conditions
+    if( weatherData.currentConditions.preciptype && weatherData.currentConditions.preciptype.includes("snow")) {
+            function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.innerHTML = '❄';
+            
+            // Random starting position
+            snowflake.style.left = Math.random() * 100 + '%';
+            
+            // Random size
+            const size = Math.random() * 0.8 + 0.5;
+            snowflake.style.fontSize = size + 'em';
+            
+            // Random animation duration (fall speed)
+            const duration = Math.random() * 10 + 10;
+            snowflake.style.animationDuration = duration + 's';
+            
+            // Random delay
+            snowflake.style.animationDelay = Math.random() * 5 + 's';
+            
+            // Random opacity
+            snowflake.style.opacity = Math.random() * 0.6 + 0.4;
+            
+            snowflakeContainer.appendChild(snowflake);
+            
+            // Remove snowflake after animation completes
+            setTimeout(() => {
+                snowflake.remove();
+            }, (duration + 5) * 1000);
+        }
+
+        // Create initial snowflakes
+        for (let i = 0; i < 50; i++) {
+            createSnowflake();
+        }
+
+        // Continuously create new snowflakes
+        setInterval(createSnowflake, 300);
+    }
+
+    // Changing background based on day/night and weather condition
+    const backgroundHour = locationTime.getHours();
+    // change the font color based on background
+    document.body.style.color = "black";
+    if (weatherData.currentConditions.conditions === "Clear" || weatherData.currentConditions.conditions === "Partially cloudy") {
+        if(backgroundHour >=6 && backgroundHour <12){
+            background.className = "background-morning";
+        } else if (backgroundHour >=12 && backgroundHour <18){
+            background.className = "background-afternoon";
+        } else if (backgroundHour >=18 && backgroundHour <20){
+            background.className = "background-evening";
+            document.body.style.color = "white";
+        } else {
+            background.className = "background-night";
+            document.body.style.color = "white";
+        }
+    }
+   
 }
 
